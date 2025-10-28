@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
         android:orientation="vertical">
 
         <com.google.android.material.appbar.AppBarLayout
@@ -24,8 +24,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fitsSystemWindows="true">
+            android:layout_height="match_parent">
 
             <androidx.coordinatorlayout.widget.CoordinatorLayout
                 android:id="@+id/main_content"
@@ -37,64 +36,79 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/pb_waiting"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:indeterminate="true"
+                        android:visibility="invisible"
+                        app:indicatorColor="@color/color_fab_active" />
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tab_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_spacing_dp8"
+                        app:tabIndicatorFullWidth="false"
+                        app:tabMode="scrollable"
+                        app:tabTextAppearance="@style/TabLayoutTextStyle" />
+
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recycler_view"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:nextFocusRight="@+id/fab" />
+                        android:nextFocusRight="@+id/fab"
+                        android:scrollbars="vertical" />
 
                     <LinearLayout
                         android:id="@+id/layout_test"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/connection_test_height"
-                        android:background="?attr/colorPrimary"
-                        android:gravity="center|start"
-                        android:nextFocusRight="@+id/fab"
+                        android:layout_height="@dimen/view_height_dp64"
                         android:clickable="true"
                         android:focusable="true"
-                        android:nextFocusLeft="@+id/recycler_view">
+                        android:nextFocusLeft="@+id/recycler_view"
+                        android:nextFocusRight="@+id/fab"
+                        android:orientation="vertical">
+
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="1dp"
+                            android:background="@color/divider_color_light" />
 
                         <TextView
                             android:id="@+id/tv_test_state"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="start|center"
                             android:maxLines="2"
                             android:minLines="1"
-                            android:paddingStart="16dp"
+                            android:paddingStart="@dimen/padding_spacing_dp16"
                             android:text="@string/connection_test_pending"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                            android:textColor="@color/colorText" />
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
                     </LinearLayout>
                 </LinearLayout>
 
-
-                <com.github.jorgecastilloprz.FABProgressCircle
-                    android:id="@+id/fabProgressCircle"
+                <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|end"
-                    android:layout_marginBottom="24dp">
+                    android:layout_marginEnd="@dimen/padding_spacing_dp16">
 
                     <com.google.android.material.floatingactionbutton.FloatingActionButton
                         android:id="@+id/fab"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentBottom="true"
                         android:layout_gravity="bottom|end"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginBottom="16dp"
+                        android:layout_marginBottom="@dimen/view_height_dp36"
                         android:clickable="true"
                         android:focusable="true"
                         android:nextFocusLeft="@+id/layout_test"
-                        android:src="@drawable/ic_stat_name"
+                        android:src="@drawable/ic_play_24dp"
                         app:layout_anchorGravity="bottom|right|end" />
 
-                </com.github.jorgecastilloprz.FABProgressCircle>
+                </FrameLayout>
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
         </RelativeLayout>
     </LinearLayout>
@@ -106,20 +120,8 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header"
         app:itemIconTint="@color/colorAccent"
-        app:menu="@menu/menu_drawer" >
+        app:menu="@menu/menu_drawer">
 
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:padding="2dp">
-
-            <TextView
-                    android:id="@+id/version"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center" />
-        </LinearLayout>
     </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>

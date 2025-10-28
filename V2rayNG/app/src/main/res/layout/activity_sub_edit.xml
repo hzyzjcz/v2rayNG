@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ServerActivity">
+    android:fitsSystemWindows="true"
+    tools:context=".ui.SubEditActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/layout_margin_top_height">
+            android:padding="@dimen/padding_spacing_dp16">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -24,14 +26,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/title_server"
+                    android:text="@string/title_sub_setting"
                     android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/layout_margin_top_height"
+                android:layout_marginTop="@dimen/padding_spacing_dp16"
                 android:orientation="vertical">
 
                 <TextView
@@ -42,7 +44,7 @@
                 <EditText
                     android:id="@+id/et_remarks"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/edit_height"
+                    android:layout_height="wrap_content"
                     android:inputType="text" />
 
             </LinearLayout>
@@ -50,51 +52,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/layout_margin_top_height"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="@string/sub_setting_enable" />
-
-
-                <androidx.appcompat.widget.AppCompatCheckBox
-                    android:id="@+id/chk_enable"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="2dp"
-                    android:paddingEnd="6dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/layout_margin_top_height"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="@string/sub_auto_update" />
-
-
-                <androidx.appcompat.widget.AppCompatCheckBox
-                    android:id="@+id/auto_update_check"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="2dp"
-                    android:paddingEnd="6dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/layout_margin_top_height"
+                android:layout_marginTop="@dimen/padding_spacing_dp16"
                 android:orientation="vertical">
 
                 <TextView
@@ -107,23 +65,166 @@
                     android:id="@+id/et_url"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:gravity="top"
                     android:inputType="textMultiLine"
                     android:maxLines="10"
-                    android:minLines="5"
-                    android:scrollbars="vertical" />
+                    android:minLines="2"
+                    android:scrollbars="vertical"
+                    tools:ignore="TextFields" />
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_spacing_dp16"
+                android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sub_setting_filter" />
+
+                <EditText
+                    android:id="@+id/et_filter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_spacing_dp16"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sub_setting_intelligent_selection_filter" />
+
+                <EditText
+                    android:id="@+id/et_intelligent_selection_filter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_spacing_dp16"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:text="@string/sub_setting_enable" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/chk_enable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/padding_spacing_dp16"
+                    android:paddingEnd="@dimen/padding_spacing_dp16"
+                    app:theme="@style/BrandedSwitch" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_spacing_dp16"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:text="@string/sub_auto_update" />
+
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/auto_update_check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/padding_spacing_dp16"
+                    android:paddingEnd="@dimen/padding_spacing_dp16"
+                    app:theme="@style/BrandedSwitch" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_spacing_dp16"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:text="@string/sub_allow_insecure_url" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/allow_insecure_url"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/padding_spacing_dp16"
+                    android:paddingEnd="@dimen/padding_spacing_dp16"
+                    app:theme="@style/BrandedSwitch" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_spacing_dp16"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sub_setting_pre_profile" />
+
+                <EditText
+                    android:id="@+id/et_pre_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/sub_setting_pre_profile_tip"
+                    android:inputType="text" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_spacing_dp16"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sub_setting_next_profile" />
+
+                <EditText
+                    android:id="@+id/et_next_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/sub_setting_pre_profile_tip"
+                    android:inputType="text" />
+
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/layout_margin_top_height"
-            android:layout_marginTop="@dimen/layout_margin_top_height"
+            android:layout_marginTop="@dimen/padding_spacing_dp16"
+            android:layout_marginBottom="@dimen/padding_spacing_dp16"
             android:orientation="vertical" />
 
     </LinearLayout>
